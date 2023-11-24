@@ -8,3 +8,4 @@ Tools used to build the project:-
             HTML, CSS, Javascript to create the front-end interface
             Python Flask programming for the Backend integrating front-end and SQL database enabling seemless data interactions between user and the database.
             MySql Database framework for creating the database structure that includes tables, it's attributes and relationships among the different entities
+To know further, Please refer Gaming Center Database document
