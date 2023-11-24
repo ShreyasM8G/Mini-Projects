@@ -1,0 +1,65 @@
+body::before {
+    content: "";
+    background-image: url('/static/logo4.jpeg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: mymove 5s 2;
+    transform: translateZ(-50px); /* Initial translation in Z-axis */
+    perspective: 1000px; /* Perspective value for 3D effect */
+    transform-style: preserve-3d; /* Enable 3D transformations */
+}
+@keyframes mymove {
+    50% {
+        transform: scale(1.5) translateZ(50px); /* Zoom and translate in Z-axis */
+    }
+}
+
+.game-panels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px; /* Adjust the gap as needed */
+    max-width: 1200px; /* Adjust the maximum width as needed */
+    
+    margin-top: 150px;
+    margin-left: 95px;
+    opacity: 90%;
+}
+
+.game-panel {
+    text-align: center;
+    width: calc(33.33% - 20px); /* 33.33% width for three panels with 20px gap between them */
+    margin-bottom: 20px;
+}
+
+.game-panel img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px; /* Rounded corners for the whole panel */
+}
+
+.play-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px; /* Rounded corners for the whole panel */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    margin-top: 13%;
+}

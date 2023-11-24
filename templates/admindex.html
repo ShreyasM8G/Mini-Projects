@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admindex.css') }}">
+    <script src="{{ url_for('static', filename='adminscript.js') }}"></script>
+</head>
+<body>
+    <div class="admin-dashboard">
+        <h1>Admin Dashboard</h1>
+        <div class="admin-actions" style="text-align: center;">
+            <button style="margin: 10px 0 ;" id="create-match">Create Match</button>
+            <button style="margin: 10px 0 ;" id="create-team">Create Team</button>
+            <button style="margin: 10px 0 ;" id="create-tournament">Create Tournament</button>
+            <button style="margin: 10px 0 ;" id="create-game">Create Game</button>
+            <button style="margin: 10px 0 ;" id="add-developer">Add Game-developer</button>
+        </div>
+        <a href="{{ url_for('login') }}"><button id="logout" style="margin-top: 10%; border-radius: 5px; background-color: #ff5733; color: #ffffff;">Logout</button></a>
+    </div>
+
+    <!-- Create Match Dialog -->
+    <div class="dialog" id="create-match-dialog">
+        <h2>Create Match</h2>
+        <form id="match-form">
+            <label for="team1">Team 1 ID:</label>
+            <input type="number" id="team1" name="team1" required>
+            
+            <label for="team2">Team 2 ID:</label>
+            <input type="number" id="team2" name="team2" required>
+            
+            <label for="tournament">Tournament ID:</label>
+            <input type="number" id="tournament" name="tournament" required>
+            
+            <label for="game">Game Name:</label>
+            <input type="text" id="game" name="game" required>
+            
+            <button type="submit">Submit</button>
+            <button id="cancel-match" type="button">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Game Developer Dialog -->
+    <div class="dialog" id="game-developer-dialog">
+        <h2>Create Game Developer</h2>
+        <form id="developer-form">
+            
+            <label for="developer-name">Name:</label>
+            <input type="text" id="developer-name" name="developer-name" required>
+            
+            <label for="mobile-number">Mobile Number:</label>
+            <input type="number" id="mobile-number" name="mobile-number" required>
+            
+            <label for="email-id">Email ID:</label>
+            <input type="email" id="email-id" name="email-id" required>
+            
+            <label for="game-name">Game Name:</label>
+            <input type="text" id="game-name" name="game-name" required>
+            
+            <button type="submit">Submit</button>
+            <button id="cancel-developer" type="button">Cancel</button>
+        </form>
+    </div>
+
+
+    <!-- Create Tournament Dialog -->
+    <div class="dialog" id="create-tournament-dialog">
+        <h2>Create Tournament</h2>
+        <form id="tournament-form">
+            <label for="game-id">Game ID:</label>
+            <input type="number" id="game-id" name="game-id" required>
+            
+            <label for="tournament-name">Tournament Name:</label>
+            <input type="text" id="tournament-name" name="tournament-name" required>
+            
+            <label for="tournament-game">Game Name:</label>
+            <input type="text" id="tournament-game" name="tournament-game" required>
+            
+            <label for="prize-money">Prize Money:</label>
+            <input type="number" id="prize-money" name="prize-money" required>
+            
+            <label for="participation-fee">Participation Fee:</label>
+            <input type="number" id="participation-fee" name="participation-fee" required>
+            
+            <button type="submit">Submit</button>
+            <button id="cancel-tournament" type="button">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Create Team Dialog -->
+    <div class="dialog" id="create-team-dialog">
+        <h2>Create Team</h2>
+        <form id="team-form">
+            <label for="tournament-id">Tournament ID:</label>
+            <input type="number" id="tournament-id" name="tournament-id" required>
+            
+            <label for="team-game">Game Name:</label>
+            <input type="text" id="team-game" name="team-game" required>
+            
+            <label for="team-name">Team Name:</label>
+            <input type="text" id="team-name" name="team-name" required>
+            
+            <label for="player-ids">Player IDs (comma-separated):</label>
+            <input type="text" id="player-ids" name="player-ids" required>
+            
+            <button type="submit">Submit</button>
+            <button id="cancel-team" type="button">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Create Game Dialog -->
+    <div class="dialog" id="create-game-dialog">
+        <h2>Create Game</h2>
+        <form id="game-form">
+            <label for="game-name">Game Name:</label>
+            <input type="text" id="game-name" name="game-name" required>
+            
+            <label for="developer-id">Developer ID:</label>
+            <input type="number" id="developer-id" name="developer-id" required>
+            
+            <label for="price">Price per Game:</label>
+            <input type="number" id="price" name="price" required>
+            
+            <label for="no_of_players">No. of Players:</label>
+            <input type="number" id="nop" name="nop" required>
+            
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Multiplayer">Multiplayer</option>
+                <option value="Singleplayer">Singleplayer</option>
+            </select>
+            
+            <button type="submit">Submit</button>
+            <button id="cancel-game" type="button">Cancel</button>
+        </form>
+    </div>
+
+</body>
+</html>

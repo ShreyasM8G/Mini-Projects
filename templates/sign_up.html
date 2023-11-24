@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sign_styles.css') }}">
+</head>
+<body>
+    <div class="entire-section">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <form id="Signup-form" method="POST" action="{{ url_for('register') }}">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="number" id="mobile_no" name="mobile" placeholder="Mobile Number" required maxlength="10">
+                <input type="number" id="Age" name="Age" placeholder="Age" required>
+                <input type="text" id="dob" name="dob" placeholder="DD/MM/YYYY--DOB" required>
+                <input type="number" id="Points" name="Points" placeholder="Your Deposits" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

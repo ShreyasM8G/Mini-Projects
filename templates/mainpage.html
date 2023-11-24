@@ -1,0 +1,633 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mainpage.css') }}">
+    <script src="{{ url_for('static', filename='mainpage.js') }}"></script>
+</head>
+<body>
+    
+<!-- Navigation Bar -->
+<div class="navbar">
+    <img class="logo" src="{{ url_for('static', filename='logo3.jpeg') }}" alt="Logo">
+    <div class="greeting">Welcome, {{ username }}</div>
+    
+    <!-- Fancy Dropdown Button -->
+    <div class="dropdown">
+        <button class="fancy-btn" onclick="toggleSidebar()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+</div>
+
+
+<!-- Left Sidebar with Dropdown Menu -->
+<div class="sidebar" id="sidebar">
+    <label for="components">Select a Component:</label>
+    <select id="components" onchange="selectComponent()">
+        <option value="teams">Teams</option>
+        <option value="team-players">Team Players</option>
+        <option value="matches">Matches</option>
+        <option value="tournaments">Tournaments</option>
+        <option value="our-players">Our Players</option>
+        <option value="game-developers">Game Developers</option>
+    </select>
+</div>
+
+<!-- Main Content Area -->
+<div class="main-content">
+    <!-- Leaderboard Panel -->
+    <div class="leaderboard-panel">
+        <h2>Top the LeaderBoard</h2>
+        <!-- Scrollable table here -->
+        <table class="leaderboard-table">
+            <!-- Table content will be dynamically generated -->
+        </table>
+        <button class="rise-up-btn">Rise up</button>
+    </div>
+
+    <!-- Display Panel for Components -->
+    <div class="display-panel">
+        <!-- Content for the selected component will be displayed here -->
+        <div id="developer-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="developer-table">
+                <thead>
+                    <tr>
+                        <th>Developer ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th>Game Name</th>
+                    </tr>
+                </thead>
+                <tbody id="developer-table-body">
+                    <!-- Developer table content will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+       
+        <div id="teams-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="teams-table">
+                <thead>
+                    <tr>
+                        <th>Team ID</th>
+                        <th>Tournament ID</th>
+                        <th>Team Name</th>
+                        <th>Game Name</th>
+                    </tr>
+                </thead>
+                <tbody id="teams-table-body">
+                    <!-- Teams table content will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="teamplayers-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="teamplayers-table">
+                <thead>
+                    <tr>
+                        <th>Player ID</th>
+                        <th>Team ID</th>
+                    </tr>
+                </thead>
+                <tbody id="teamplayers-table-body">
+                    <!-- TeamPlayers table content will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+        <div id="matches-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="matches-table">
+                <thead>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Winner TeamID</th>
+                        <th>Game Name</th>
+                        <th>Team1 ID</th>
+                        <th>Team2 ID</th>
+                        <th>Tournament ID</th>
+                    </tr>
+                </thead>
+                <tbody id="matches-table-body">
+                    <!-- Matches table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="mwinner-btn">Update Winner</button>
+        </div>
+        <div id="tournaments-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="tournaments-table">
+                <thead>
+                    <tr>
+                        <th>Tournament ID</th>
+                        <th>Game ID</th>
+                        <th>Tournament Name</th>
+                        <th>Game Name</th>
+                        <th>Entry Fee</th>
+                        <th>WinnerTeam ID</th>
+                        <th>Prize Money</th>
+                    </tr>
+                </thead>
+                <tbody id="tournaments-table-body">
+                    <!-- Tournaments table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="twinner-btn">Update WinnerTeam</button>
+        </div>
+        <div id="players-table-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="players-table">
+                <thead>
+                    <tr>
+                        <th>Player ID</th>
+                        <th>Email</th>
+                        <th>DOB</th>
+                        <th>Age</th>
+                        <th>Deposits</th>
+                        <th>Mobile</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody id="players-table-body">
+                    <!-- Players table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="deposits-btn">Add Deposits</button>
+        </div>
+        <div id="tournaments-teams-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="tournaments-teams-table">
+                <thead>
+                    <tr>
+                        <th>Team ID</th>
+                        <th>Team Name</th>
+                    </tr>
+                </thead>
+                <tbody id="tournaments-teams-table-body">
+                    <!-- Tournaments-teams table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="tt-btn">Enter Tournament ID</button>
+        </div>
+        <div id="tournaments-match-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="tournaments-match-table">
+                <thead>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Game</th>
+                        <th>Team1 ID</th>
+                        <th>Team1 Name</th>
+                        <th>Team2 ID</th>
+                        <th>Team2 Name</th>
+                    </tr>
+                </thead>
+                <tbody id="tournaments-match-table-body">
+                    <!-- Tournaments-teams table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="tm-btn">Enter Tournament ID</button>
+        </div>
+        <div id="tournaments-games-wrapper" style="max-height: 400px; overflow-y: auto;">
+            <table class="tournaments-games-table">
+                <thead>
+                    <tr>
+                        <th>Tournament ID</th>
+                        <th>Tournament Name</th>
+                        <th>Entry Fee</th>
+                        <th>Prize</th>
+                    </tr>
+                </thead>
+                <tbody id="tournaments-games-table-body">
+                    <!-- Tournaments-teams table content will be dynamically added here -->
+                </tbody>
+            </table>
+            <button class="tg-btn">Enter Game ID</button>
+        </div>
+    </div>
+</div>
+
+<button class="play-button" onclick="redirectToGames()">Play Exciting Games</button>
+
+
+<!-- "tt" Dialog Box -->
+<div class="tt-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;"> Teams in Tournament </h3>
+
+    <form id="tt-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="tt-id" style="display: block; margin-bottom: 5px;">Tournament ID:</label>
+            <input type="number" id="tt-id" name="tt-id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <button type="button" id="ttupdate-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Know Teams</button>
+    </form>
+</div>
+
+
+<!-- "tm" Dialog Box -->
+<div class="tm-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;"> Matches in Tournament </h3>
+
+    <form id="tm-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="tm-id" style="display: block; margin-bottom: 5px;">Tournament ID:</label>
+            <input type="number" id="tm-id" name="tm-id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <button type="button" id="tmupdate-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Know Teams</button>
+    </form>
+</div>
+
+<!-- "tm" Dialog Box -->
+<div class="tg-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;"> Games in Tournament </h3>
+
+    <form id="tg-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="tg-id" style="display: block; margin-bottom: 5px;">Game ID:</label>
+            <input type="number" id="tg-id" name="tg-id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+        <button type="button" id="tgupdate-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Know Tournaments</button>
+    </form>
+</div>
+
+
+<!-- "Update Match" Dialog Box -->
+<div class="mwinner-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;">Update Match Details</h3>
+
+    <form id="update-match-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="match-id" style="display: block; margin-bottom: 5px;">Match ID:</label>
+            <input type="number" id="match-id" name="match_id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="winner-team-id" style="display: block; margin-bottom: 5px;">Winner Team ID:</label>
+            <input type="number" id="winner-team-id" name="winner_team_id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <button type="button" id="mupdate-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Update</button>
+    </form>
+</div>
+
+<!-- "Update Tournament" Dialog Box -->
+<div class="twinner-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;">Update Tournament Details</h3>
+
+    <form id="update-tournament-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="tourn-id" style="display: block; margin-bottom: 5px;">Tournament ID:</label>
+            <input type="number" id="tourn-id" name="tourn_id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="winner-team-id" style="display: block; margin-bottom: 5px;">Winner Team ID:</label>
+            <input type="number" id="twinner-team-id" name="winner_team_id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <button type="button" id="tupdate-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Update</button>
+    </form>
+</div>
+
+<!-- "Update Player Deposits" Dialog Box -->
+<div class="pdepo-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; display: none;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;">Add deposits</h3>
+
+    <form id="update-player-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="player-id" style="display: block; margin-bottom: 5px;">Player ID:</label>
+            <input type="number" id="player-id" name="player-id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="deposits" style="display: block; margin-bottom: 5px;">Add Deposits</label>
+            <input type="number" id="deposits" name="deposits" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <button type="button" id="pdepo-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Update</button>
+    </form>
+</div>
+
+
+<!-- "Rise Up" Dialog Box -->
+<div class="rise-up-dialog" style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; padding: 20px; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000;">
+
+    <h3 style="color: #333; text-align: center; margin-bottom: 20px;">Update Leaderboard</h3>
+
+    <form id="rise-up-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="player-id" style="display: block; margin-bottom: 5px;">Player ID:</label>
+            <input type="number" id="lplayer-id" name="lplayer_id" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="points" style="display: block; margin-bottom: 5px;">Points:</label>
+            <input type="number" id="points" name="points" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="game-name" style="display: block; margin-bottom: 5px;">Game Name:</label>
+            <input type="text" id="game-name" name="game_name" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 15px;">
+            <label for="player-name" style="display: block; margin-bottom: 5px;">Player Name:</label>
+            <input type="text" id="player-name" name="player_name" required style="width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px;">
+        </div>
+
+        <button type="button" id="submit-btn" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+    </form>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+
+    // Function to toggle the sidebar visibility
+    function toggleSidebar() {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.style.display = (sidebar.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function redirectToGames() {
+        window.location.href = '{{ url_for("gamepage") }}';
+    }
+
+
+    // Function to load leaderboard data
+    function loadLeaderboard() {
+        $.ajax({
+            url: '/get_leaderboard',  // Flask route to get leaderboard data
+            type: 'GET',
+            success: function (data) {
+                // Update the leaderboard table with the received data
+                $('.leaderboard-table').html(data);
+            },
+            error: function (error) {
+                console.log('Error loading leaderboard:', error);
+            }
+        });
+    }
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#submit-btn').click(function () {
+        // Get input values
+        var playerId = $('#lplayer-id').val();
+        var points = $('#points').val();
+        var gameName = $('#game-name').val();
+        var playerName = $('#player-name').val();
+
+        // AJAX request to update the leaderboard
+        $.ajax({
+            url: '/update_leaderboard',  // Flask route to update leaderboard
+            type: 'POST',
+            data: {
+                player_id: playerId,
+                points: points,
+                game_name: gameName,
+                player_name: playerName
+            },
+            success: function () {
+                // Reload the leaderboard after updating
+                loadLeaderboard();
+                // Hide the dialog box
+                $('.rise-up-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating leaderboard:', error);
+            }
+        });
+    });
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#mupdate-btn').click(function () {
+        // Get input values
+        var match_id = $('#match-id').val();
+        var wint_id = $('#winner-team-id').val();
+
+        // AJAX request to update the leaderboard
+        $.ajax({
+            url: '/update_matches',  // Flask route to update leaderboard
+            type: 'POST',
+            data: {
+                match_id: match_id,
+                wint_id: wint_id
+            },
+            success: function () {
+                matches();
+                $('.mwinner-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#tupdate-btn').click(function () {
+        // Get input values
+        var tourn_id = $('#tourn-id').val();
+        var twint_id = $('#twinner-team-id').val();
+
+        // AJAX request to update the leaderboard
+        $.ajax({
+            url: '/update_tournament',  // Flask route to update leaderboard
+            type: 'POST',
+            data: {
+                tourn_id: tourn_id,
+                twint_id: twint_id
+            },
+            success: function () {
+                tournament();
+                $('.twinner-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#pdepo-btn').click(function () {
+        // Get input values
+        var player_id = $('#player-id').val();
+        var deposits = $('#deposits').val();
+
+        // AJAX request to update the leaderboard
+        $.ajax({
+            url: '/update_player',  // Flask route to update leaderboard
+            type: 'POST',
+            data: {
+                player_id: player_id,
+                deposits: deposits
+            },
+            success: function () {
+                ourplayers();
+                $('.pdepo-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#ttupdate-btn').click(function () {
+        // Get input values
+        var tt_id = $('#tt-id').val();
+
+        // AJAX request to update the tournaments-teams-table
+        $.ajax({
+            url: '/tt_update',  // Flask route to update tournaments-teams-table
+            type: 'POST',
+            data: {
+                ttid: tt_id  
+            },
+            success: function (data) {
+                // Clear existing content in the tournaments-teams-table
+                $('#tournaments-teams-table-body').empty();
+
+                // Append new rows to the tournaments-teams-table 
+                data.forEach(function (row) {
+                    $('#tournaments-teams-table-body').append(row);
+                });
+
+                // Display the tournaments-teams-table
+                $('#tournaments-teams-table').show();
+                $('.tt-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#tmupdate-btn').click(function () {
+        // Get input values
+        var tm_id = $('#tm-id').val();
+
+        // AJAX request to update the tournaments-teams-table
+        $.ajax({
+            url: '/tm_update',  // Flask route to update tournaments-teams-table
+            type: 'POST',
+            data: {
+                tmid: tm_id  
+            },
+            success: function (data) {
+                // Clear existing content in the tournaments-teams-table
+                $('#tournaments-match-table-body').empty();
+
+                // Append new rows to the tournaments-teams-table 
+                data.forEach(function (row) {
+                    $('#tournaments-match-table-body').append(row);
+                });
+
+                // Display the tournaments-teams-table
+                $('#tournaments-match-table').show();
+                $('.tm-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+    // Function to handle "Submit" button click in the dialog box
+    $('#tgupdate-btn').click(function () {
+        // Get input values
+        var tg_id = $('#tg-id').val();
+
+        // AJAX request to update the tournaments-teams-table
+        $.ajax({
+            url: '/tg_update',  // Flask route to update tournaments-teams-table
+            type: 'POST',
+            data: {
+                tgid: tg_id
+            },
+            success: function (data) {
+                // Clear existing content in the tournaments-teams-table
+                $('#tournaments-games-table-body').empty();
+
+                // Append new rows to the tournaments-teams-table 
+                data.forEach(function (row) {
+                    $('#tournaments-games-table-body').append(row);
+                });
+
+                // Display the tournaments-teams-table
+                $('#tournaments-games-table').show();
+                $('.tg-dialog').hide();
+            },
+            error: function (error) {
+                console.log('Error updating matches', error);
+            }
+        });
+    });
+
+
+
+    // Call loadLeaderboard function on page load
+    $(document).ready(function () {
+        // Hide the "Rise Up" dialog box initially
+        $('.rise-up-dialog').hide();
+        $('.mwinner-dialog').hide();
+        $('.twinner-dialog').hide();
+        $('.pdepo-dialog').hide();
+        $('.tt-dialog').hide();
+        $('.tm-dialog').hide();
+        $('.tg-dialog').hide();
+        
+        loadLeaderboard();
+
+        // Function to handle "Rise Up" button click
+        $('.rise-up-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.rise-up-dialog').show();
+    });
+        // Function to handle "Rise Up" button click
+        $('.mwinner-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.mwinner-dialog').show();
+    });
+        // Function to handle "Rise Up" button click
+        $('.twinner-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.twinner-dialog').show();
+    });
+        // Function to handle "deposits-btn" button click
+        $('.deposits-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.pdepo-dialog').show();
+    });
+        // Function to handle "deposits-btn" button click
+        $('.tt-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.tt-dialog').show();
+    });
+        // Function to handle "deposits-btn" button click
+        $('.tm-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.tm-dialog').show();
+    });
+         // Function to handle "deposits-btn" button click
+         $('.tg-btn').click(function () {
+        // Show the "Rise Up" dialog box
+        $('.tg-dialog').show();
+    });
+
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/logo.jpeg'); /* Adjust the path based on your actual image filename */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 140%;
+}
+
+
+/* Navigation Bar Styles */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo Styles */
+.logo {
+    width: 80px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* Greeting Styles */
+.greeting {
+    font-size: 1.2em;
+}
+
+
+h2 {
+    color: #f9f9f9;
+}
+
+/* Leaderboard Table Styles */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.leaderboard-table th {
+    background-color: #fff8e1;
+    color: #1a1a1a;
+}
+
+/* "Rise Up" Button Styles */
+.twinner-btn, .mwinner-btn, .deposits-btn, .tt-btn, .ttupdate-btn, .tmupdate-btn, .tm-btn,
+.rise-up-btn, .top-btn, .tg-btn, .tgupdate-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #1a1a1a;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 200px;
+    z-index: 100;
+    display: none;
+}
+
+/* Main Content Area Styles */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* Leaderboard Panel Styles */
+.leaderboard-panel {
+    background-color: #292929;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    opacity: 90%;
+    max-height: max-content; /* Set a maximum height for the leaderboard panel */
+    overflow-y: auto; /* Add a vertical scrollbar if needed */
+}
+
+/* Display Panel Styles */
+.display-panel {
+    background-color: #292929;
+    color: white;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    opacity: 90%;
+    flex-grow: 1;
+    overflow-y: auto; /* Add a vertical scrollbar if needed */
+}
+
+
+/* Fancy Button Styles */
+.fancy-btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Animation for Fancy Button Bars */
+.fancy-btn .bar {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 6px 6px;
+    transition: 0.4s;
+}
+
+/* Rotate the bars for animation */
+.fancy-btn.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.fancy-btn.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.fancy-btn.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/*Table Styles */
+.tournaments-teams-table,.tournaments-games-table,
+.tournaments-match-table,
+.players-table,
+.tournaments-table,
+.teamplayers-table,
+.developer-table,
+.teams-table,
+.matches-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff8e1; /* Creamy white background color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow for depth */
+}
+
+.tournaments-teams-table th, .tournaments-teams-table td, .tournaments-match-table th,
+.tournaments-table th, .tournaments-table td, .tournaments-match-table td,
+.players-table th, .players-table td, 
+.teamplayers-table th, .teamplayers-table td,.tournaments-games-table th,
+.developer-table th, .developer-table td,.tournaments-games-table td,
+.teams-table th, .teams-table td,
+.matches-table th, .matches-table td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Increase padding for better spacing */
+    text-align: left;
+    color: #333; /* Dark text color */
+}
+
+.tournaments-games-table th,
+.tournaments-match-table th,
+.tournaments-teams-table th,
+.tournaments-table th,
+.players-table th,
+.teamplayers-table th,
+.developer-table th,
+.teams-table th,
+.matches-table th {
+    background-color: #f5f5f5; /* Light gray background color for header */
+}
+
+/*Table Wrapper Styles */
+#tournaments-games-wrapper,
+#tournaments-match-wrapper,
+#tournaments-teams-wrapper,
+#tournaments-table-wrapper,
+#players-table-wrapper,
+#teamplayers-table-wrapper,
+#developer-table-wrapper,
+#teams-table-wrapper,
+#matches-table-wrapper {
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #f9f9f9; /* Light gray background color for the wrapper */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow for depth */
+    margin-bottom: 10px;
+}
+
+@keyframes boomAnimation {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.play-button{
+    background-color:  coral;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    animation: boomAnimation 1s infinite ease-in-out; /* Adjust the duration and other properties as needed */
+}

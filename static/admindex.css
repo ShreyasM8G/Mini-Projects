@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    margin: 0;
+    background-image: url('https://th.bing.com/th/id/OIG.G1PgsxVRudVn4UomiVev?pid=ImgGn');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    margin-top: 13%;
+}
+
+.admin-dashboard {
+    background-color:beige;
+    width: 275px;
+    margin: 50px auto;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    opacity: 80%;
+}
+
+.admin-dashboard h1{
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.admin-actions button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+.dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.dialog h2 {
+    margin: 0;
+}
+
+.dialog form {
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog label {
+    margin-top: 10px;
+}
+
+.dialog input {
+    margin-bottom: 10px;
+}
+
+.dialog button {
+    margin-top: 10px;
+}

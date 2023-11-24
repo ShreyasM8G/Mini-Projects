@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='adlog_styles.css') }}">
+    <script>
+        function validateCredentials() {
+            var correctUsername1 = "";     //Admin1 name
+            var correctPassword1 = "";     //Admin1 password
+
+            var correctUsername2 = "";     //Admin2 name 
+            var correctPassword2 = "";     //Admin2 password
+
+            var enteredUsername = document.getElementById("username").value;
+            var enteredPassword = document.getElementById("password").value;
+
+            if (enteredUsername === correctUsername1 || enteredUsername === correctUsername2 && enteredPassword === correctPassword1 || enteredPassword === correctPassword2) {
+                window.location.href = "{{ url_for('admindex') }}";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="entire-section">
+        <div class="adlog-box">
+            <h1>Admin Login</h1>
+            <form id="adlog-form">
+                <input type="text" id="username" name="username" placeholder="Admin" required>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </form>
+            <button type="button" onclick="validateCredentials()">Login</button>
+        </div>
+    </div>
+</body>
+</html>

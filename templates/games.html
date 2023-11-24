@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='games.css') }}">
+</head>
+<body>
+
+<!-- Game Panels -->
+<div class="game-panels">
+    <!-- Panel 1 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game1.jpg') }}" alt="Game 1">
+        <a href="https://www.crazygames.com/game/helix-jump" target="_blank"><button onclick="playGame(1,{{ player_id}})" class="play-button">Play Game1</button></a>
+    </div>
+
+    <!-- Panel 2 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game2.jpg') }}" alt="Game 2">
+        <a href="https://www.crazygames.com/game/stickman-counter-terror-strike" target="_blank"><button onclick="playGame(2,{{ player_id }})" class="play-button">Play Top</button></a>
+    </div>
+
+    <!-- Panel 3 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game3.jpg') }}" alt="Game 3">
+        <a href="https://www.crazygames.com/game/stickman-counter-terror-strike" target="_blank"><button onclick="playGame(3,{{ player_id }})" class="play-button">Play TempleRun</button></a>
+    </div>
+
+    <!-- Panel 4 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game4.jpg') }}" alt="Game 4">
+        <a href="https://www.crazygames.com/game/helix-jump" target="_blank"><button onclick="playGame(4,{{ player_id }})" class="play-button">Play SubwaySurfers</button></a>
+    </div>
+
+    <!-- Panel 5 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game5.jpg') }}" alt="Game 5">
+        <a href="https://www.crazygames.com/game/stickman-counter-terror-strike" target="_blank"><button onclick="playGame(5,{{ player_id }})" class="play-button">Play Chess</button></a>
+    </div>
+
+    <!-- Panel 6 -->
+    <div class="game-panel">
+        <img src="{{ url_for('static', filename='game6.jpg') }}" alt="Game 6">
+        <a href="https://www.crazygames.com/game/stickman-counter-terror-strike" target="_blank"><button onclick="playGame(6, {{ player_id }})" class="play-button">Play Carrom</button></a>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    function playGame(gameId,playedplayer_id) {
+        var player_id = playedplayer_id;
+
+        // AJAX request to add values in the GamesPlayed table
+        $.ajax({
+            url: '/addgames_played',
+            type: 'POST',
+            data: {
+                player_id: player_id,
+                game_id: gameId
+            },
+            success: function (response) {
+                // Handle success response if needed
+                console.log(response);
+            },
+            error: function (error) {
+                console.log('Error updating GamesPlayed', error);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

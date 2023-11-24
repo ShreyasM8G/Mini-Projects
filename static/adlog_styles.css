@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://th.bing.com/th/id/OIG.G1PgsxVRudVn4UomiVev?pid=ImgGn');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    text-align: center;
+    margin:0;
+    margin-top: 13%;
+    animation: mymove 5s infinite;
+}
+
+.entire-section {
+    position: relative;   
+}
+
+.adlog-box {
+    position: relative;
+    background-color: #fff;
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    opacity: 90%;
+}
+
+h1 {
+    color: #333;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+input {
+    width: 90%;
+    padding: 15px;
+    margin: 15px 0;
+    border: 3px solid #ccc;
+    border-radius: 10px;
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: #007BFF ;
+    color: #fff;
+    border: color-mix(in hsl increasing hue, 30% percentage, 60% percentage);
+    border-radius: 10px;
+    cursor: pointer;
+}
